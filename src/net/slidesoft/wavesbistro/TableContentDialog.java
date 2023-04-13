@@ -528,7 +528,8 @@ public class TableContentDialog extends javax.swing.JDialog {
     }
 
     private void calcTotal() {
-       final double tot =   this.productModel.products().stream().mapToDouble( Product::getPriceWithQtn ).sum();
+       double tot =   this.productModel.products().stream().mapToDouble( Product::getPriceWithQtn ).sum();
+       tot = (float) (Math.round(tot * 100) / 100.0);
        final DecimalFormat df = new DecimalFormat("00.00") ;
        lblTotal.setText( df.format( tot ) );
    }
